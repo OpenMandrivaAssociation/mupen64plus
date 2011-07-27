@@ -32,7 +32,8 @@ BuildRequires:	SDL-devel
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	gtk2-devel
 BuildRequires:	lirc-devel
-BuildRequires:	libsamplerate-devel 
+BuildRequires:	libsamplerate-devel
+BuildRequires:	desktop-file-utils
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 Conflicts:	mupen64plus-qt
