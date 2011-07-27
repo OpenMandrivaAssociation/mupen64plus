@@ -4,7 +4,7 @@ Release:		%mkrel 2
 
 Summary:	Nintendo 64 Emulator (GTK Gui)
 License:	GPLv2+
-Group:		Applications/Emulators
+Group:		Emulators
 URL:		http://code.google.com/p/mupen64plus/
 Source0:	Mupen64Plus-1-5-src.tar.gz
 Patch0:		ftbfs-gvariant-type-conflicts.patch
