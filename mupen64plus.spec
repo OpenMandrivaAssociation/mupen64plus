@@ -17,7 +17,7 @@ Patch6:		load_aidacrate.patch
 Patch7:		load_vistatus.patch
 Patch8:		noexecstack.patch
 Patch9:		osd-pause-crash.patch
-Patch10:	plugin-searchpath.patch
+#Patch10:	plugin-searchpath.patch
 Patch11:	resume_on_start.patch
 Patch12:	rice-ati-symbols.patch
 Patch13:	rice-crash-vendorstring.patch
@@ -55,7 +55,7 @@ This package includes a GTK front-end and all the plug-ins.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%patch10 -p1
+#patch10 -p1
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
