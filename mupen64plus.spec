@@ -7,7 +7,7 @@ License:	GPLv2+
 Group:		Emulators
 URL:		http://code.google.com/p/mupen64plus/
 Source0:	mupen64plus-bundle-src-%{version}.tar.gz
-
+Patch0:		mupen64plus-zlib.patch
 BuildRequires:	SDL-devel
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	gtk2-devel
@@ -25,7 +25,7 @@ This package includes a GTK front-end and all the plug-ins.
 
 %prep
 %setup -q -n mupen64plus-bundle-src-%{version}
-
+%patch0 -p1
 %build
 ./m64p_build.sh
 
