@@ -38,9 +38,9 @@ make -C source/mupen64plus-audio-sdl/projects/unix install PREFIX=%{buildroot}%{
 make -C source/mupen64plus-input-sdl/projects/unix install PREFIX=%{buildroot}%{_prefix} LIBDIR=%{buildroot}%{_libdir}/mupen64plus MANDIR=%{buildroot}%{_mandir}
 make -C source/mupen64plus-rsp-hle/projects/unix install PREFIX=%{buildroot}%{_prefix} LIBDIR=%{buildroot}%{_libdir}/mupen64plus MANDIR=%{buildroot}%{_mandir}
 make -C source/mupen64plus-video-rice/projects/unix install PREFIX=%{buildroot}%{_prefix} LIBDIR=%{buildroot}%{_libdir}/mupen64plus MANDIR=%{buildroot}%{_mandir}/man1
-ln -s libmupen64plus.so.2.0.0 %{buildroot}%{_libdir}/%{name}/libmupen64plus.so.2
+# ln -s libmupen64plus.so.2.0.0 %{buildroot}%{_libdir}/%{name}/libmupen64plus.so.2
 pushd %{buildroot}%{_prefix}
-ln -s %{_libdir}/mupen64plus  %{buildroot}%{_datadir}/mupen64plus/plugins
+# ln -s %{_libdir}/mupen64plus  %{buildroot}%{_datadir}/mupen64plus/plugins
 popd
 
 # desktop-file-install --vendor="" \
