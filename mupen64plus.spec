@@ -11,7 +11,7 @@ Source0:	mupen64plus-bundle-src-%{version}.tar.gz
 BuildRequires:	SDL-devel
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	gtk2-devel
-BuildRequires:	lirc-devel zlib-devel
+BuildRequires:	lirc-devel zlib1-devel
 BuildRequires:	libsamplerate-devel 
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
