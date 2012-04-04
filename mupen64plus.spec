@@ -22,7 +22,6 @@ Conflicts:	mupen64plus-cli
 Mupen64plus is a Nintendo 64 Emulator.
 This package includes a GTK front-end and all the plug-ins.
 
-This package is in PLF as Mandriva Linux policy forbids emulators.
 
 %prep
 %setup -q -n mupen64plus-bundle-src-%{version}
