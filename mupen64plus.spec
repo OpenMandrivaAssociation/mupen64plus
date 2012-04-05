@@ -1,9 +1,9 @@
 
 Name:           mupen64plus
 Version:        1.99.5
-Release:        %mkrel 1.1
+Release:        %mkrel 1.2
 Summary:        Plugin-Based Nintendo 64 Emulator
-Group:          Emulators/
+Group:          Emulators
 License:        GPLv2+
 Url:            http://code.google.com/p/mupen64plus/
 AutoReqProv:    on
