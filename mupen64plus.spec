@@ -1,7 +1,7 @@
 
 Name:           mupen64plus
 Version:        1.99.5
-Release:        %mkrel 1.2
+Release:        %mkrel 1.3
 Summary:        Plugin-Based Nintendo 64 Emulator
 Group:          Emulators
 License:        GPLv2+
@@ -132,8 +132,10 @@ rm %{buildroot}%{_datadir}/mupen64plus2/font.ttf
 make -C source/mupen64plus-audio-sdl/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1
 make -C source/mupen64plus-input-sdl/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1
 make -C source/mupen64plus-rsp-hle/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1
-make -C source/mupen64plus-video-rice/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1
-chmod -R 0755 %{buildroot}%{_libdir}
+make -C source/mupen64plus-video-rice/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1chmod -R 0755 %{buildroot}%{_libdir}
+
+mv %{_libdir}/mupen64plus2/%{name}/mupen64plus*.so %{_libdir}/mupen64plus2/
+rmdir %{_libdir}/mupen64plus2/%{name}
 
 %post -n libmupen64plus2 -p /sbin/ldconfig
 
@@ -175,7 +177,7 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-audio-sdl/INSTALL
 %doc source/mupen64plus-audio-sdl/LICENSES
 %doc source/mupen64plus-audio-sdl/RELEASE
-%{_libdir}/mupen64plus2/%{name}/mupen64plus-audio-sdl.so
+%{_libdir}/mupen64plus2/mupen64plus-audio-sdl.so
 
 %files plugin-input-sdl
 %defattr(-,root,root,-)
@@ -186,14 +188,14 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-input-sdl/README
 %doc source/mupen64plus-input-sdl/RELEASE
 %{_datadir}/mupen64plus2/InputAutoCfg.ini
-%{_libdir}/mupen64plus2/%{name}/mupen64plus-input-sdl.so
+%{_libdir}/mupen64plus2/mupen64plus-input-sdl.so
 
 %files plugin-rsp-hle
 %defattr(-,root,root,-)
 %doc source/mupen64plus-rsp-hle/INSTALL
 %doc source/mupen64plus-rsp-hle/LICENSES
 %doc source/mupen64plus-rsp-hle/RELEASE
-%{_libdir}/mupen64plus2/%{name}/mupen64plus-rsp-hle.so
+%{_libdir}/mupen64plus2/mupen64plus-rsp-hle.so
 
 %files plugin-video-rice
 %defattr(-,root,root,-)
@@ -202,4 +204,4 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-video-rice/README
 %doc source/mupen64plus-video-rice/RELEASE
 %{_datadir}/mupen64plus2/RiceVideoLinux.ini
-%{_libdir}/mupen64plus2/%{name}/mupen64plus-video-rice.so
+%{_libdir}/mupen64plus2/mupen64plus-video-rice.so
