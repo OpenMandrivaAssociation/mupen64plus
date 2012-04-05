@@ -203,4 +203,3 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-video-rice/RELEASE
 %{_datadir}/mupen64plus2/RiceVideoLinux.ini
 %{_libdir}/mupen64plus2/%{name}/mupen64plus-video-rice.so
-j
