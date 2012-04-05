@@ -167,7 +167,7 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-ui-console/LICENSES
 %doc source/mupen64plus-ui-console/README
 %doc source/mupen64plus-ui-console/RELEASE
-%doc %{_mandir}/man6/mupen64plus.6*
+%doc %{_mandir}/man*/mupen64plus.*
 %{_bindir}/mupen64plus
 
 %files plugin-audio-sdl
