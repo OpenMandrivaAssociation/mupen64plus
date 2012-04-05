@@ -23,7 +23,7 @@ audio, graphical rendering (RDP), the signal co-processor (RSP), and input.
 %package -n libmupen64plus2
 Summary:        Shared Library Interface to the Mupen64plus Nintendo 64 Emulator
 License:        GPLv2+
-Group:          System/Emulators/Other
+Group:          Emulators
 Requires:       fonts-ttf-dejavu
 AutoReqProv:    on
 
@@ -49,7 +49,7 @@ the Mupen64plus shared library interface.
 %package ui-console
 Summary:        Command Line Frontend for the Mupen64plus Nintendo 64 Emulator
 License:        GPLv2+
-Group:          System/Emulators/Other
+Group:          Emulators
 AutoReqProv:    on
 Requires:       libmupen64plus2
 Requires:       mupen64plus-plugin-audio
@@ -66,7 +66,7 @@ This package contains a command line frontend.
 %package plugin-audio-sdl
 Summary:        SDL Audio Plugin for the Mupen64plus Nintendo 64 Emulator
 License:        GPLv2+
-Group:          System/Emulators/Other
+Group:          Emulators
 Provides:       mupen64plus-plugin-audio
 AutoReqProv:    on
 
@@ -77,7 +77,7 @@ Emulator.
 %package plugin-input-sdl
 Summary:        SDL Input Plugin for the Mupen64plus Nintendo 64 Emulator
 License:        GPLv2+
-Group:          System/Emulators/Other
+Group:          Emulators
 Provides:       mupen64plus-plugin-input
 AutoReqProv:    on
 
@@ -88,7 +88,7 @@ Emulator. It has LIRC Infrared remote control interface and Rumble Pak support.
 %package plugin-rsp-hle
 Summary:        RSP High-Level Emulation Plugin For the Mupen64plus Nintendo 64 Emulator
 License:        GPLv2+
-Group:          System/Emulators/Other
+Group:          Emulators
 AutoReqProv:    on
 
 %description plugin-rsp-hle
@@ -99,7 +99,7 @@ Nintendo 64 Emulator.
 %package plugin-video-rice
 Summary:        Rice Video Plugin for the Mupen64plus Nintendo 64 Emulator
 License:        GPLv2+
-Group:          System/Emulators/Other
+Group:          Emulators
 Provides:       mupen64plus-plugin-video
 AutoReqProv:    on
 
