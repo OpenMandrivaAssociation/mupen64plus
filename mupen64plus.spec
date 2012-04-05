@@ -136,7 +136,7 @@ make -C source/mupen64plus-video-rice/projects/unix install PREFIX="%{_prefix}" 
 chmod -R 0755 %{buildroot}%{_libdir}
 
 mv %{buildroot}/%{_libdir}/mupen64plus2/%{name}/mupen64plus*.so %{buildroot}/%{_libdir}/mupen64plus2/
-rmdir %{_libdir}/mupen64plus2/%{name}
+rmdir %{buildroot}/%{_libdir}/mupen64plus2/%{name}
 
 %post -n libmupen64plus2 -p /sbin/ldconfig
 
