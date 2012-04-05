@@ -167,7 +167,7 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-ui-console/LICENSES
 %doc source/mupen64plus-ui-console/README
 %doc source/mupen64plus-ui-console/RELEASE
-# %doc %{_mandir}/man*/mupen64plus.*
+%doc %{_mandir}/man6/man6/mupen64plus.*
 %{_bindir}/mupen64plus
 
 %files plugin-audio-sdl
@@ -175,7 +175,7 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-audio-sdl/INSTALL
 %doc source/mupen64plus-audio-sdl/LICENSES
 %doc source/mupen64plus-audio-sdl/RELEASE
-# %{_libdir}/mupen64plus2/mupen64plus-audio-sdl.so
+%{_libdir}/mupen64plus2/%{name}/mupen64plus-audio-sdl.so
 
 %files plugin-input-sdl
 %defattr(-,root,root,-)
@@ -186,14 +186,14 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-input-sdl/README
 %doc source/mupen64plus-input-sdl/RELEASE
 %{_datadir}/mupen64plus2/InputAutoCfg.ini
-# %{_libdir}/mupen64plus2/mupen64plus-input-sdl.so
+%{_libdir}/mupen64plus2/%{name}/mupen64plus-input-sdl.so
 
 %files plugin-rsp-hle
 %defattr(-,root,root,-)
 %doc source/mupen64plus-rsp-hle/INSTALL
 %doc source/mupen64plus-rsp-hle/LICENSES
 %doc source/mupen64plus-rsp-hle/RELEASE
-# %{_libdir}/mupen64plus2/mupen64plus-rsp-hle.so
+%{_libdir}/mupen64plus2/%{name}/mupen64plus-rsp-hle.so
 
 %files plugin-video-rice
 %defattr(-,root,root,-)
@@ -202,30 +202,5 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-video-rice/README
 %doc source/mupen64plus-video-rice/RELEASE
 %{_datadir}/mupen64plus2/RiceVideoLinux.ini
-# %{_libdir}/mupen64plus2/mupen64plus-video-rice.so
-
-%changelog
-* Sat Dec 25 2010 guido+packman@berhoerster.name
-- update to version 1.99.4
-  * Console-UI Front End Application
-    + bugfixes
-  * Core Emulator Library
-    + bugfixes
-    + new re-entrant R4300 disassembler
-  * Audio-SDL Plugin
-    + bugfixes
-  * Input-SDL Plugin
-    + bugfixes
-    + many new joystick auto-configurations
-  * Rice Video Plugin
-    + anisotropic filtering
-    + trilinear filtering
-    + mipmaps
-    + support for anti-aliasing (GL_MULTISAMPLE)
-    + bugfixes
-  * RSP-HLE Plugin
-    + bugfixes
-* Mon Jul 19 2010 guido+packman@berhoerster.name
-- recompressed source tarball
-* Mon Jul 19 2010 guido+packman@berhoerster.name
-- inintial packaging of mupen64plus
+%{_libdir}/mupen64plus2/%{name}/mupen64plus-video-rice.so
+j
