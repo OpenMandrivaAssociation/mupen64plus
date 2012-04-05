@@ -132,7 +132,8 @@ rm %{buildroot}%{_datadir}/mupen64plus2/font.ttf
 make -C source/mupen64plus-audio-sdl/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1
 make -C source/mupen64plus-input-sdl/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1
 make -C source/mupen64plus-rsp-hle/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1
-make -C source/mupen64plus-video-rice/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1chmod -R 0755 %{buildroot}%{_libdir}
+make -C source/mupen64plus-video-rice/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1 
+chmod -R 0755 %{buildroot}%{_libdir}
 
 mv %{buildroot}/%{_libdir}/mupen64plus2/%{name}/mupen64plus*.so %{buildroot}/%{_libdir}/mupen64plus2/
 rmdir %{_libdir}/mupen64plus2/%{name}
