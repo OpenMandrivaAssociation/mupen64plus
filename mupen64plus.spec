@@ -11,7 +11,7 @@ BuildRequires:  gcc-c++ libSDL-devel libpng-devel libsamplerate-devel
 BuildRequires:  freetype2-devel zlib-devel lirc-devel
 Source:         %{name}-bundle-src-%{version}.tar.gz
 Source100:      %{name}-rpmlintrc
-Patch0:         mupen64plus-zlib.patch
+Patch0:		mupen64plus-zlib.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -38,7 +38,7 @@ This package contains the shared library interface for frontends.
 %package -n libmupen64plus-devel
 Summary:        Include Files for Mupen64plus Development
 License:        GPLv2+
-Group:          Development/Libraries/C and C++
+Group:          Development/C
 Requires:       libmupen64plus2 = %{version}
 AutoReqProv:    on
 
