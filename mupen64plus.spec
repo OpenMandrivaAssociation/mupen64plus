@@ -175,7 +175,7 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-audio-sdl/INSTALL
 %doc source/mupen64plus-audio-sdl/LICENSES
 %doc source/mupen64plus-audio-sdl/RELEASE
-%{_libdir}/mupen64plus2/mupen64plus-audio-sdl.so
+# %{_libdir}/mupen64plus2/mupen64plus-audio-sdl.so
 
 %files plugin-input-sdl
 %defattr(-,root,root,-)
