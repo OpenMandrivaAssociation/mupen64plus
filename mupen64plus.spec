@@ -186,14 +186,14 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-input-sdl/README
 %doc source/mupen64plus-input-sdl/RELEASE
 %{_datadir}/mupen64plus2/InputAutoCfg.ini
-%{_libdir}/mupen64plus2/mupen64plus-input-sdl.so
+# %{_libdir}/mupen64plus2/mupen64plus-input-sdl.so
 
 %files plugin-rsp-hle
 %defattr(-,root,root,-)
 %doc source/mupen64plus-rsp-hle/INSTALL
 %doc source/mupen64plus-rsp-hle/LICENSES
 %doc source/mupen64plus-rsp-hle/RELEASE
-%{_libdir}/mupen64plus2/mupen64plus-rsp-hle.so
+# %{_libdir}/mupen64plus2/mupen64plus-rsp-hle.so
 
 %files plugin-video-rice
 %defattr(-,root,root,-)
@@ -202,7 +202,7 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-video-rice/README
 %doc source/mupen64plus-video-rice/RELEASE
 %{_datadir}/mupen64plus2/RiceVideoLinux.ini
-%{_libdir}/mupen64plus2/mupen64plus-video-rice.so
+# %{_libdir}/mupen64plus2/mupen64plus-video-rice.so
 
 %changelog
 * Sat Dec 25 2010 guido+packman@berhoerster.name
