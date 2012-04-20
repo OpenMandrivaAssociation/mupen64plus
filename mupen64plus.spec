@@ -1,7 +1,7 @@
 
 Name:           mupen64plus
 Version:        1.99.5
-Release:        %mkrel 1.3
+Release:        %mkrel 1.4
 Summary:        Plugin-Based Nintendo 64 Emulator
 Group:          Emulators
 License:        GPLv2+
@@ -107,6 +107,17 @@ AutoReqProv:    on
 This package contains the Rice Video Plugin for the Mupen64plus Nintendo 64
 Emulator. It provides Hi-resolution texture support.
 
+%package plugin-video-arachnoid
+Summary:        Rice Video Plugin for the Mupen64plus Nintendo 64 Emulator
+License:        GPLv2+
+Group:          Emulators
+Provides:       mupen64plus-plugin-video
+AutoReqProv:    on
+
+%description plugin-video-arachnoid
+This package contains the Arachnoid Video Plugin for the Mupen64plus Nintendo 64
+Emulator. It provides Hi-resolution texture support.
+
 %prep
 %setup -q -n %{name}-bundle-src-%{version}
 %patch0 -p1
@@ -114,25 +125,27 @@ Emulator. It provides Hi-resolution texture support.
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags} -C source/mupen64plus-core/projects/unix all SHAREDIR=%{_datadir}/mupen64plus2/ LIRC=1 NO_ASM=1 V=1
-make %{?_smp_mflags} -C source/mupen64plus-ui-console/projects/unix all COREDIR=%{_libdir}/ SHAREDIR=%{_datadir}/mupen64plus2/ PLUGINDIR=%{_libdir}/mupen64plus2/ NO_ASM=1 V=1
-make %{?_smp_mflags} -C source/mupen64plus-audio-sdl/projects/unix all NO_ASM=1 V=1
-make %{?_smp_mflags} -C source/mupen64plus-input-sdl/projects/unix all NO_ASM=1 V=1
-make %{?_smp_mflags} -C source/mupen64plus-rsp-hle/projects/unix all NO_ASM=1 V=1
-make %{?_smp_mflags} -C source/mupen64plus-video-rice/projects/unix all NO_ASM=1 V=1
-
+make %{?_smp_mflags} -C source/mupen64plus-core/projects/unix all SHAREDIR=%{_datadir}/mupen64plus2/ LIRC=1 V=1
+make %{?_smp_mflags} -C source/mupen64plus-ui-console/projects/unix all COREDIR=%{_libdir}/ SHAREDIR=%{_datadir}/mupen64plus2/ PLUGINDIR=%{_libdir}/mupen64plus2/ V=1
+make %{?_smp_mflags} -C source/mupen64plus-audio-sdl/projects/unix all V=1
+make %{?_smp_mflags} -C source/mupen64plus-input-sdl/projects/unix all V=1
+make %{?_smp_mflags} -C source/mupen64plus-rsp-hle/projects/unix all V=1
+make %{?_smp_mflags} -C source/mupen64plus-video-rice/projects/unix all V=1
+make %{?_smp_mflags} -C source/mupen64plus-video-arachnoid/projects/unix all V=1
 %install
-make -C source/mupen64plus-core/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/ INCDIR=%{_includedir}/mupen64plus/ LIRC=1 NO_ASM=1
+make -C source/mupen64plus-core/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/ INCDIR=%{_includedir}/mupen64plus/ LIRC=1
 pushd %{buildroot}%{_libdir}
 ln -sf libmupen64plus.so.2.0.0 libmupen64plus.so.2
 ln -sf libmupen64plus.so.2.0.0 libmupen64plus.so
 popd
 make -C source/mupen64plus-ui-console/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" BINDIR=/usr/bin/ MANDIR=%{_mandir}/man6/ NO_ASM=1
-rm %{buildroot}%{_datadir}/mupen64plus2/font.ttf
-make -C source/mupen64plus-audio-sdl/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1
-make -C source/mupen64plus-input-sdl/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1
-make -C source/mupen64plus-rsp-hle/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1
-make -C source/mupen64plus-video-rice/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ NO_ASM=1 
+# rm %{buildroot}%{_datadir}/mupen64plus2/font.ttf
+make -C source/mupen64plus-audio-sdl/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" LIBDIR=%{_libdir}/mupen64plus2/
+make -C source/mupen64plus-input-sdl/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ 
+make -C source/mupen64plus-rsp-hle/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" LIBDIR=%{_libdir}/mupen64plus2/ 
+make -C source/mupen64plus-video-rice/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ 
+make -C source/mupen64plus-video-arachnoid/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/
+
 chmod -R 0755 %{buildroot}%{_libdir}
 
 mv %{buildroot}/%{_libdir}/mupen64plus2/%{name}/mupen64plus*.so %{buildroot}/%{_libdir}/mupen64plus2/
@@ -153,6 +166,7 @@ rm -rf %{buildroot}
 %{_datadir}/mupen64plus2/mupen64plus.cht
 %{_datadir}/mupen64plus2/mupencheat.txt
 %{_datadir}/mupen64plus2/mupen64plus.ini
+%{_datadir}/mupen64plus2/font.ttf
 
 %files -n libmupen64plus-devel
 %defattr(-,root,root,-)
@@ -206,3 +220,12 @@ rm -rf %{buildroot}
 %doc source/mupen64plus-video-rice/RELEASE
 %{_datadir}/mupen64plus2/RiceVideoLinux.ini
 %{_libdir}/mupen64plus2/mupen64plus-video-rice.so
+
+%files plugin-video-arachnoid
+%defattr(-,root,root,-)
+%doc source/mupen64plus-video-arachnoid/INSTALL
+%doc source/mupen64plus-video-arachnoid/LICENSES
+%doc source/mupen64plus-video-arachnoid/README
+%doc source/mupen64plus-video-arachnoid/RELEASE
+%{_datadir}/mupen64plus2/ArachnoidVideoLinux.ini
+%{_libdir}/mupen64plus2/mupen64plus-video-arachnoid.so
