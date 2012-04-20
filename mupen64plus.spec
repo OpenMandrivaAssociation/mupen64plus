@@ -1,3 +1,7 @@
+%define major 2
+%define libname %mklibname %{name} %{api} %{major}
+%define develname %mklibname %{name} -d
+
 
 Name:           mupen64plus
 Version:        1.99.5
@@ -20,7 +24,7 @@ playing many games. It includes four MIPS R4300 CPU emulators, with dynamic
 recompilers for 32-bit x86 and 64-bit amd64 systems.  It supports plugins for
 audio, graphical rendering (RDP), the signal co-processor (RSP), and input.
 
-%package -n libmupen64plus2
+%package -n %{libname}
 Summary:        Shared Library Interface to the Mupen64plus Nintendo 64 Emulator
 License:        GPLv2+
 Group:          Emulators
@@ -35,7 +39,7 @@ audio, graphical rendering (RDP), the signal co-processor (RSP), and input.
 
 This package contains the shared library interface for frontends.
 
-%package -n libmupen64plus-devel
+%package -n %{develname}
 Summary:        Include Files for Mupen64plus Development
 License:        GPLv2+
 Group:          Development/C
@@ -107,17 +111,6 @@ AutoReqProv:    on
 This package contains the Rice Video Plugin for the Mupen64plus Nintendo 64
 Emulator. It provides Hi-resolution texture support.
 
-%package plugin-video-arachnoid
-Summary:        Rice Video Plugin for the Mupen64plus Nintendo 64 Emulator
-License:        GPLv2+
-Group:          Emulators
-Provides:       mupen64plus-plugin-video
-AutoReqProv:    on
-
-%description plugin-video-arachnoid
-This package contains the Arachnoid Video Plugin for the Mupen64plus Nintendo 64
-Emulator. It provides Hi-resolution texture support.
-
 %prep
 %setup -q -n %{name}-bundle-src-%{version}
 %patch0 -p1
@@ -131,7 +124,7 @@ make %{?_smp_mflags} -C source/mupen64plus-audio-sdl/projects/unix all V=1
 make %{?_smp_mflags} -C source/mupen64plus-input-sdl/projects/unix all V=1
 make %{?_smp_mflags} -C source/mupen64plus-rsp-hle/projects/unix all V=1
 make %{?_smp_mflags} -C source/mupen64plus-video-rice/projects/unix all V=1
-make %{?_smp_mflags} -C source/mupen64plus-video-arachnoid/projects/unix all V=1
+
 %install
 make -C source/mupen64plus-core/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/ INCDIR=%{_includedir}/mupen64plus/ LIRC=1
 pushd %{buildroot}%{_libdir}
@@ -158,7 +151,7 @@ rmdir %{buildroot}/%{_libdir}/mupen64plus2/%{name}
 %clean
 rm -rf %{buildroot}
 
-%files -n libmupen64plus2
+%files -n %{libname}
 %defattr(-,root,root,-)
 %dir %{_datadir}/mupen64plus2
 %dir %{_libdir}/mupen64plus2
@@ -168,7 +161,7 @@ rm -rf %{buildroot}
 %{_datadir}/mupen64plus2/mupen64plus.ini
 %{_datadir}/mupen64plus2/font.ttf
 
-%files -n libmupen64plus-devel
+%files -n %{develname}
 %defattr(-,root,root,-)
 %doc source/mupen64plus-core/INSTALL
 %doc source/mupen64plus-core/LICENSES
@@ -221,11 +214,3 @@ rm -rf %{buildroot}
 %{_datadir}/mupen64plus2/RiceVideoLinux.ini
 %{_libdir}/mupen64plus2/mupen64plus-video-rice.so
 
-%files plugin-video-arachnoid
-%defattr(-,root,root,-)
-%doc source/mupen64plus-video-arachnoid/INSTALL
-%doc source/mupen64plus-video-arachnoid/LICENSES
-%doc source/mupen64plus-video-arachnoid/README
-%doc source/mupen64plus-video-arachnoid/RELEASE
-%{_datadir}/mupen64plus2/ArachnoidVideoLinux.ini
-%{_libdir}/mupen64plus2/mupen64plus-video-arachnoid.so
