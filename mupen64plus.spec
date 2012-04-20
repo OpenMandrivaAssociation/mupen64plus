@@ -31,7 +31,7 @@ Group:          Emulators
 Requires:       fonts-ttf-dejavu
 AutoReqProv:    on
 
-%description -n libmupen64plus2
+%description -n %{libname}
 Mupen64Plus is a plugin-based N64 emulator which is capable of accurately
 playing many games. It includes four MIPS R4300 CPU emulators, with dynamic
 recompilers for 32-bit x86 and 64-bit amd64 systems.  It supports plugins for
@@ -46,7 +46,7 @@ Group:          Development/C
 Requires:       libmupen64plus2 = %{version}
 AutoReqProv:    on
 
-%description -n libmupen64plus-devel
+%description -n %{develname}
 This package contains all necessary include files to develop frontends against
 the Mupen64plus shared library interface.
 
