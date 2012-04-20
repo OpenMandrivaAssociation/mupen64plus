@@ -137,7 +137,7 @@ make -C source/mupen64plus-audio-sdl/projects/unix install PREFIX="%{_prefix}" D
 make -C source/mupen64plus-input-sdl/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ 
 make -C source/mupen64plus-rsp-hle/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" LIBDIR=%{_libdir}/mupen64plus2/ 
 make -C source/mupen64plus-video-rice/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/ 
-make -C source/mupen64plus-video-arachnoid/projects/unix install PREFIX="%{_prefix}" DESTDIR="%{buildroot}" SHAREDIR=%{_datadir}/mupen64plus2/ LIBDIR=%{_libdir}/mupen64plus2/
+
 
 chmod -R 0755 %{buildroot}%{_libdir}
 
