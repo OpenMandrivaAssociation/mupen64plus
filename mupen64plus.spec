@@ -144,9 +144,9 @@ chmod -R 0755 %{buildroot}%{_libdir}
 mv %{buildroot}/%{_libdir}/mupen64plus2/%{name}/mupen64plus*.so %{buildroot}/%{_libdir}/mupen64plus2/
 rmdir %{buildroot}/%{_libdir}/mupen64plus2/%{name}
 
-%post -n libmupen64plus2 -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
 
-%postun -n libmupen64plus2 -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %clean
 rm -rf %{buildroot}
