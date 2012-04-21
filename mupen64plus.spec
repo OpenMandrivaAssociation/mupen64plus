@@ -1,11 +1,11 @@
 %define major 2
-%define libname %mklibname %{name} %{api} %{major}
+%define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
 
 Name:           mupen64plus
 Version:        1.99.5
-Release:        %mkrel 1.4
+Release:        %mkrel 1.5
 Summary:        Plugin-Based Nintendo 64 Emulator
 Group:          Emulators
 License:        GPLv2+
