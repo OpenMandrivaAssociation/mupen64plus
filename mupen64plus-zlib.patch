@@ -1,0 +1,47 @@
+From bb5cdce2b1c865615077b96302df6ec4e996761d Mon Sep 17 00:00:00 2001
+From: Sven Eckelmann <sven@narfation.org>
+Date: Wed, 4 Apr 2012 19:58:49 +0200
+Subject: [PATCH] Build without zlib.pc on a standard setup
+
+Signed-off-by: Sven Eckelmann <sven@narfation.org>
+---
+ projects/unix/Makefile |    9 ++++-----
+ 1 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/source/mupen64plus-core/projects/unix/Makefile  b/source/mupen64plus-core/projects/unix/Makefile
+index e2df2c6..20468a2 100644
+--- a/source/mupen64plus-core/projects/unix/Makefile
++++ b/source/mupen64plus-core/projects/unix/Makefile
+@@ -171,9 +171,6 @@ endif
+ ifeq ($(shell pkg-config --modversion libpng 2>/dev/null),)
+   $(error No libpng development libraries found!)
+ endif
+-ifeq ($(shell pkg-config --modversion zlib 2>/dev/null),)
+-  $(error No zlib development libraries found!)
+-endif
+ ifeq ($(shell pkg-config --modversion freetype2 2>/dev/null),)
+   $(error No FreeType 2 development libraries found!)
+ endif
+@@ -183,8 +180,8 @@ endif
+ ifeq ($(shell pkg-config --modversion glu 2>/dev/null),)
+   $(error No OpenGL utility development libraries found!)
+ endif
+-CFLAGS += $(shell pkg-config --cflags libpng zlib freetype2 gl glu)
+-LDLIBS +=  $(shell pkg-config --libs libpng zlib freetype2 gl glu)
++CFLAGS += $(shell pkg-config --cflags libpng freetype2 gl glu)
++LDLIBS +=  $(shell pkg-config --libs libpng freetype2 gl glu)
+ 
+ # test for presence of SDL
+ ifeq ($(shell which sdl-config 2>/dev/null),)
+@@ -193,6 +190,8 @@ endif
+ CFLAGS	+= $(shell sdl-config --cflags)
+ LDLIBS	+= $(shell sdl-config --libs)
+ 
++LDLIBS	+= -lz
++
+ # set base program pointers and flags
+ CC       ?= gcc
+ CXX      ?= g++
+-- 
+1.7.9.1
+
