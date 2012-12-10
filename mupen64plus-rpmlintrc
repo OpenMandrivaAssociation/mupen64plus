@@ -1,0 +1,3 @@
+addFilter("libmupen64plus-devel.* no-dependency-on")
+addFilter("mupen64plus-ui-console.* explicit-lib-dependency")
+
