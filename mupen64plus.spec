@@ -10,6 +10,7 @@ License:	GPLv2+
 Group:		Emulators
 Url:		https://code.google.com/p/mupen64plus/
 Source0:	%{name}-bundle-src-%{version}.tar.gz
+BuildRequires:	make
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
